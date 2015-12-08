@@ -1,4 +1,4 @@
-import '../node_modules/babel-core/polyfill'
+import './node_modules/babel-core/polyfill'
 import React from 'react'
 import { render } from 'react-dom'
 import Root from './containers/Root'
