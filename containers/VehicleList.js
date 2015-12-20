@@ -94,10 +94,10 @@ class VehicleList extends Component {
             var callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
 
             this.state.firstRender = false;
-            var eb = new EventBus("http://52.35.175.134:8080/eventbus");
+            var eb = new EventBus("http://52.35.175.134:8080");
             vehicleArray.map(function (vehicle) {
                 eb.onopen = function () {
-                    eb.registerHandler("gps-feed-" + vehicle.id, function (err, msg) {
+                    eb.registerHandler("gps-feed-all" /*+ vehicle.id*/, function (err, msg) {
 
                         //Integration instructions
                         //------------------------
