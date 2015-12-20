@@ -31,7 +31,17 @@ var config = {
 var app = new (require('express'))()
 
 var compiler = webpack(webpackConfig)
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+// app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
+app.use(require('webpack-dev-middleware')(compiler, {
+  noInfo: true,
+  publicPath: webpackConfig.output.publicPath
+}));
+
+app.use(require('webpack-hot-middleware')(compiler, {
+  log: console.log,
+  path: '/__webpack_hmr',
+  heartbeat: 10 * 1000
+}));
 
 
 var fs = require("fs");
@@ -131,18 +141,18 @@ var fs = require("fs");
 //------------------------
 // Integrate q library to work with reactive pattern
 
-app.get('/api/v1/guardians', function (req, res) {
-    console.log("&&&&");
-    fs.readFile(__dirname + "/" + "vehicles.json", 'utf8', function (err, data) {
-
-        var userName = req.query.username;
-        console.log("1");
-        var guardians = getVehicles(JSON.parse(data), userName);
-
-        res.end(JSON.stringify(guardians));
-
-    });
-})
+// app.get('/api/v1/guardians', function (req, res) {
+//     console.log("&&&&");
+//     fs.readFile(__dirname + "/" + "vehicles.json", 'utf8', function (err, data) {
+//
+//         var userName = req.query.username;
+//         console.log("1");
+//         var guardians = getVehicles(JSON.parse(data), userName);
+//
+//         res.end(JSON.stringify(guardians));
+//
+//     });
+// })
 
 
 var getAngels = function getAngelByTimeRange(data, vehicleId, start, stop) {
