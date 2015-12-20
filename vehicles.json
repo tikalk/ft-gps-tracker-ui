@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "username": "g1",
+    "vehicles": [
+      {
+        "id": 1,
+        "serialNumber": "111-aaa",
+        "kind": "Mazda3"
+      },
+      {
+        "id": 2,
+        "serialNumber": "111-bbb",
+        "kind": "Mazda6"
+      }
+    ]
+  }
+]

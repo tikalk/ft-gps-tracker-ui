@@ -1,0 +1,42 @@
+[
+  {
+    "_id": "bf40538a-436a-438b-9605-ce512d99845b",
+    "isOpen": true,
+    "vehicleId": 1,
+    "startTime": 150901121602,
+    "endTime": 150901121602,
+    "segmentType": "transit"
+  },
+  {
+    "_id": "45330160-ff05-46b0-8e17-0542ee407b3e",
+    "isOpen": false,
+    "vehicleId": 1,
+    "startTime": 150901121446,
+    "endTime": 150901121538,
+    "segmentType": "place"
+  },
+  {
+    "_id": "0d74ea3e-55e6-4ce3-8cfb-6e9f80f3d886",
+    "isOpen": false,
+    "vehicleId": 1,
+    "startTime": 150901121349,
+    "endTime": 150901121349,
+    "segmentType": "transit"
+  },
+  {
+    "_id": "6488017c-cab6-4929-bf48-4e6ed02aaf0c",
+    "isOpen": false,
+    "vehicleId": 1,
+    "startTime": 150901121221,
+    "endTime": 150901121230,
+    "segmentType": "place"
+  },
+  {
+    "_id": "1a45c596-8a89-4c09-932b-7a78fcf77831",
+    "isOpen": false,
+    "vehicleId": 1,
+    "startTime": 150901120829,
+    "endTime": 150901121206,
+    "segmentType": "transit"
+  }
+]

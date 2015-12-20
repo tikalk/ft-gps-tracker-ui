@@ -1,85 +1,63 @@
 {
-  "name": "redux",
-  "version": "3.0.4",
-  "description": "Predictable state container for JavaScript apps",
-  "main": "lib/index.js",
-  "jsnext:main": "src/index.js",
-  "files": [
-    "dist",
-    "lib",
-    "src"
-  ],
+  "name": "gps-tracker-ui",
+  "version": "0.0.0",
+  "description": "gps-tracker-ui microservice",
   "scripts": {
-    "clean": "rimraf lib dist coverage",
-    "lint": "eslint src test examples",
-    "test": "mocha --compilers js:babel/register --recursive",
-    "test:watch": "npm test -- --watch",
-    "test:cov": "babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
-    "test:examples": "babel-node examples/testAll.js",
-    "check": "npm run lint && npm run test",
-    "build:lib": "babel src --out-dir lib",
-    "build:umd": "webpack src/index.js dist/redux.js --config webpack.config.development.js",
-    "build:umd:min": "webpack src/index.js dist/redux.min.js --config webpack.config.production.js",
-    "build:examples": "babel-node examples/buildAll.js",
-    "build": "npm run build:lib && npm run build:umd && npm run build:umd:min",
-    "preversion": "npm run clean && npm run check",
-    "version": "npm run build",
-    "postversion": "git push && git push --tags && npm run clean && npm run docs:publish",
-    "prepublish": "npm run clean && npm run build",
-    "docs:clean": "rimraf _book",
-    "docs:prepare": "gitbook install",
-    "docs:build": "npm run docs:prepare && gitbook build -g rackt/redux",
-    "docs:watch": "npm run docs:prepare && gitbook serve",
-    "docs:publish": "npm run docs:clean && npm run docs:build && cp CNAME _book && cd _book && git init && git commit --allow-empty -m 'update book' && git checkout -b gh-pages && touch .nojekyll && git add . && git commit -am 'update book' && git push git@github.com:rackt/redux gh-pages --force"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rackt/redux.git"
+    "url": "https://github.com/tikalk/gps-tracker-ui.git"
   },
-  "keywords": [
-    "redux",
-    "reducer",
-    "state",
-    "predictable",
-    "functional",
-    "immutable",
-    "hot",
-    "live",
-    "replay",
-    "flux",
-    "elm"
-  ],
-  "authors": [
-    "Dan Abramov <dan.abramov@me.com> (https://github.com/gaearon)",
-    "Andrew Clark <acdlite@me.com> (https://github.com/acdlite)"
-  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/rackt/redux/issues"
+    "url": "https://github.com/tikalk/gps-tracker-ui/issues"
   },
-  "homepage": "http://rackt.github.io/redux",
+  "homepage": "http://www.tikalk.com",
+  "dependencies": {
+    "babel": "^6.3.13",
+    "css-loader": "^0.23.0",
+    "exports-loader": "^0.6.2",
+    "express": "^4.13.3",
+    "extract-text-webpack-plugin": "^0.9.1",
+    "file-loader": "^0.8.5",
+    "google-map-react": "^0.9.3",
+    "history": "~1.13.1",
+    "humps": "^0.6.0",
+    "imports-loader": "^0.6.5",
+    "isomorphic-fetch": "^2.1.1",
+    "less": "^2.5.3",
+    "less-loader": "^2.2.2",
+    "lodash": "^3.10.1",
+    "normalizr": "^1.0.0",
+    "polyfill": "^0.1.0",
+    "react": "^0.14.0",
+    "react-bootstrap": "^0.28.1",
+    "react-dom": "^0.14.0",
+    "react-pure-render": "^1.0.2",
+    "react-redux": "^2.1.2",
+    "react-router": "~1.0.2",
+    "reactify": "^1.1.1",
+    "redux": "^3.0.0",
+    "redux-logger": "^2.0.2",
+    "redux-router": "^1.0.0-beta3",
+    "redux-thunk": "^0.1.0",
+    "style-loader": "^0.13.0",
+    "url-loader": "^0.5.7",
+    "webpack": "~1.12.9"
+  },
   "devDependencies": {
-    "babel": "^5.5.8",
     "babel-core": "^5.6.18",
-    "babel-eslint": "^4.1.0",
     "babel-loader": "^5.1.4",
-    "eslint": "^1.7.1",
-    "eslint-config-rackt": "1.0.0",
-    "eslint-plugin-react": "^3.6.3",
-    "expect": "^1.8.0",
-    "gitbook-cli": "^0.3.4",
-    "isparta": "^3.0.3",
-    "mocha": "^2.2.5",
-    "rimraf": "^2.3.4",
-    "webpack": "^1.9.6"
-  },
-  "npmName": "redux",
-  "npmFileMap": [
-    {
-      "basePath": "/dist/",
-      "files": [
-        "*.js"
-      ]
-    }
-  ]
+    "babel-plugin-react-transform": "^1.1.0",
+    "concurrently": "^0.1.1",
+    "express": "^4.13.3",
+    "react-transform-hmr": "^1.0.0",
+    "redux-devtools": "^3.0.0-beta-3",
+    "redux-devtools-dock-monitor": "^1.0.0-beta-3",
+    "redux-devtools-log-monitor": "^1.0.0-beta-3",
+    "webpack": "~1.12.9",
+    "webpack-dev-middleware": "^1.2.0",
+    "webpack-hot-middleware": "^2.2.0"
+  }
 }

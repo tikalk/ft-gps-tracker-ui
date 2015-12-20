@@ -1,0 +1,63 @@
+[
+  {
+    "_id": "9f2b48d7-0ef7-4733-97ff-a2ee5ce42df8",
+    "receptionTime": 150901170922,
+    "imei": "013950004346194",
+    "lat": 59.959413,
+    "lon": 30.337844,
+    "readingTime": 150901170920,
+    "speed": 0,
+    "heading": 303,
+    "distance": 100,
+    "vehicleId": 1
+  },
+  {
+
+    "_id": "b594879a-2efb-4452-97c3-77a8979a2743",
+    "receptionTime": 150901170824,
+    "imei": "013950004346194",
+    "lat": 59.855413,
+    "lon": 30.237844,
+    "readingTime": 150901170822,
+    "speed": 16,
+    "heading": 301,
+    "distance": 100,
+    "vehicleId": 2
+  },
+  {
+    "_id": "82d1cabe-1dbc-42bd-9c92-1bafdfa9032d",
+    "receptionTime": 150901170655,
+    "imei": "013950004346194",
+    "lat": 59.755413,
+    "lon": 30.137844,
+    "readingTime": 150901170653,
+    "speed": 5,
+    "heading": 255,
+    "distance": 100,
+    "vehicleId": 3
+  },
+  {
+    "_id": "f8e321a1-6deb-4b59-b87f-60c286931162",
+    "receptionTime": 150901170617,
+    "imei": "013950004346194",
+    "lat": 40.816926,
+    "lon": -73.866666,
+    "readingTime": 150901170614,
+    "speed": 0,
+    "heading": 102,
+    "distance": 100,
+    "vehicleId": 4
+  },
+  {
+    "_id": "ca8e63b7-498f-4af9-bdab-21bb48c8647c",
+    "receptionTime": 150901170501,
+    "imei": "013950004346194",
+    "lat": 40.816926,
+    "lon": -73.866666,
+    "readingTime": 150901170459,
+    "speed": 0,
+    "heading": 102,
+    "distance": 100,
+    "vehicleId": 5
+  }
+]
