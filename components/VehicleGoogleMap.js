@@ -45,7 +45,8 @@ export default class VehicleGoogleMap extends Component {
         var vehicleLocationArray = this.obj2array(this.props.vehicleLocations);
 
         var handleClick = this.props.handleClick;
-        var placeComponents = vehicleArray.map(function (vehicle) {
+				var placeComponents = []
+        if (vehicleArray.length === vehicleLocationArray.length) placeComponents = vehicleArray.map(function (vehicle) {
             var vehicleLocationsIndex = 0;
             for (var vehicleLocation in vehicleLocationArray) {
                 if (vehicleLocationArray[vehicleLocation].vehicleId == vehicle.id) {

@@ -11,9 +11,10 @@ global.directionX = 1;
 global.directionY = 1;
 
 function normlizeResponse(action, idFName, key) {
+
     var entitiesTemp
     if (typeof key !== "undefined") {
-        entitiesTemp = action.response[0][key];
+        entitiesTemp = action.response[key];
     }
     else {
         entitiesTemp = action.response;

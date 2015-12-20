@@ -36,7 +36,7 @@ class VehicleList extends Component {
         // When live we socket feed is working change following url
 
 
-        var eb = new EventBus("http://localhost:8080/eventbus");
+        var eb = new EventBus("http://52.35.175.134:8080/eventbus");
         vehicleArray.map(function (vehicle) {
             eb.onopen = function () {
                 eb.registerHandler("gps-feed-" + vehicle.id, function (err, msg) {
@@ -103,11 +103,11 @@ class VehicleList extends Component {
         //------------------------
         // When live we socket feed is working remove following block
 
-        if (this.state.firstRender) {
-            this.state.firstRender = false;
-            this.callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
-            setInterval(this.callLoadVehicleLocationsData, 200);
-        }
+        // if (this.state.firstRender) {
+        //     this.state.firstRender = false;
+        //     this.callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
+        //     setInterval(this.callLoadVehicleLocationsData, 200);
+        // }
 
 
         const {vehicles,vehicleLocations } = this.props;
@@ -154,4 +154,3 @@ export default connect(mapStateToProps, {
     loadVehicleLocations,
     pushState
 })(VehicleList)
-
