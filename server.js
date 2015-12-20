@@ -1,22 +1,37 @@
 var webpack = require('webpack')
 var webpackDevMiddleware = require('webpack-dev-middleware')
 var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config.js')
+var webpackConfig = require('./webpack.config.js')
 
-var guardiansSrvHost = "52.35.175.134";
-var guardiansSrvPort = "3080";
-
-var gpsAngelSrvHost = "52.35.175.134";
-var gpsAngelSrvPort = "8080";
-
-var segmentSrvHost = "52.35.175.134";
-var segmentSrvPort = "9080";
+var config = {
+	port: 3000 || process.env.PORT,
+	management: {
+		host: "52.35.175.134" || process.env.MANAGEMENT_HOST,
+		port: "3080" || process.env.MANAGEMENT_PORT
+	},
+	gps: {
+		host: "52.35.175.134" || process.env.GPS_HOST,
+		port: "8080" || process.env.GPS_HOST
+	},
+	segment: {
+		host: "52.35.175.134" || process.env.SEGMENT_HOST,
+		port: "9080" || process.env.SEGMENT_PORT
+	},
+};
+// var guardiansSrvHost = "52.35.175.134" || process.env.MANAGEMENT_HOST;
+// var guardiansSrvPort = "3080" || process.env.MANAGEMENT_PORT;
+//
+// var gpsAngelSrvHost = "52.35.175.134" || process.env.GPS_HOST;
+// var gpsAngelSrvPort = "8080" || process.env.GPS_HOST;
+//
+// var segmentSrvHost = "52.35.175.134" || process.env.SEGMENT_HOST;
+// var segmentSrvPort = "9080" || process.env.SEGMENT_PORT;
+// var port = 3000 || process.env.PORT;
 
 var app = new (require('express'))()
-var port = 3000
 
-var compiler = webpack(config)
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
+var compiler = webpack(webpackConfig)
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: webpackConfig.output.publicPath }))
 
 
 var fs = require("fs");
@@ -34,7 +49,7 @@ app.get('/api/v1/guardians', function (req, res) {
                              'Accept': 'application/json',
                              'Content-Type': 'application/json'
                            },
-                           url: 'http://'+guardiansSrvHost+':'+guardiansSrvPort+'/api/v1/guardians?username='+req.query.username,
+                           url: 'http://'+config.management.host+':'+config.management.port+'/api/v1/guardians?username='+req.query.username,
                            method: 'GET'
                          })
             .then(function(data) {
@@ -66,7 +81,7 @@ app.get('/gps/angel/:id', function (req, res) {
                              'Accept': 'application/json',
                              'Content-Type': 'application/json'
                            },
-                           url: 'http://'+gpsAngelSrvHost+':'+gpsAngelSrvPort+'/gps/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
+                           url: 'http://'+config.gps.host+':'+config.gps.port+'/gps/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
                            method: 'GET'
                          })
             .then(function(data) {
@@ -95,7 +110,7 @@ app.get('/segments/angel/:id', function (req, res) {
                              'Accept': 'application/json',
                              'Content-Type': 'application/json'
                            },
-                           url: 'http://'+segmentSrvHost+':'+segmentSrvPort+'/segments/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
+                           url: 'http://'+config.segment.host+':'+config.segment.port+'/segments/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
                            method: 'GET'
                          })
             .then(function(data) {
@@ -186,11 +201,11 @@ app.use(function(req, res) {
 })
 
 
-app.listen(port, function(error) {
+app.listen(config.port, function(error) {
 
     if (error) {
     console.error(error)
   } else {
-    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", port, port)
+    console.info("==> 🌎  Listening on port %s. Open up http://localhost:%s/ in your browser.", config.port, config.port)
   }
 })
