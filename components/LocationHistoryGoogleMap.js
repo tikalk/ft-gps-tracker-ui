@@ -19,10 +19,6 @@ export default class LocationHistoryGoogleMap extends Component {
         return true;
     }
 
-    shouldComponentUpdate(nextProps) {
-        return true;//!this.arraysEqual(this.props.places, nextProps.places);
-    }
-
     constructor(props) {
         super(props);
     }
@@ -32,7 +28,6 @@ export default class LocationHistoryGoogleMap extends Component {
         var defaultProps = {
             center: {lat: 59.938043, lng: 30.337157},
             zoom: 9,
-            greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
         };
         var divStyle = {
             height: '500px'

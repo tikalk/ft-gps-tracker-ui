@@ -26,29 +26,8 @@ class VehicleList extends Component {
             firstRender: true,
         };
         this.handleVehicleClick = this.handleVehicleClick.bind(this);
-        const {vehicles } = this.props;
-        var vehicleArray = this.obj2array(vehicles);
-        var callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
 
 
-        //Integration instructions
-        //------------------------
-        // When live we socket feed is working change following url
-
-
-        var eb = new EventBus("http://52.35.175.134:8080/eventbus");
-        vehicleArray.map(function (vehicle) {
-            eb.onopen = function () {
-                eb.registerHandler("gps-feed-" + vehicle.id, function (err, msg) {
-
-                    //Integration instructions
-                    //------------------------
-                    // When live feed will work make sure locations are parsed from msg
-
-                    callLoadVehicleLocationsData(msg);
-                })
-            }
-        });
     }
 
 
@@ -109,6 +88,26 @@ class VehicleList extends Component {
         //     setInterval(this.callLoadVehicleLocationsData, 200);
         // }
 
+        if (this.state.firstRender) {
+            const {vehicles } = this.props;
+            var vehicleArray = this.obj2array(vehicles);
+            var callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
+
+            this.state.firstRender = false;
+            var eb = new EventBus("http://52.35.175.134:8080/eventbus");
+            vehicleArray.map(function (vehicle) {
+                eb.onopen = function () {
+                    eb.registerHandler("gps-feed-" + vehicle.id, function (err, msg) {
+
+                        //Integration instructions
+                        //------------------------
+                        // When live feed will work make sure locations are parsed from msg
+
+                        callLoadVehicleLocationsData(msg);
+                    })
+                }
+            });
+        }
 
         const {vehicles,vehicleLocations } = this.props;
 
