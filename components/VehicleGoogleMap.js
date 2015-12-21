@@ -33,7 +33,11 @@ export default class VehicleGoogleMap extends Component {
     render() {
 
 
-
+        var defaultProps = {
+            center: {lat: 59.938043, lng: 30.337157},
+            zoom: 9,
+            greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
+        };
         var divStyle = {
             height: '500px'
         };
@@ -78,10 +82,14 @@ export default class VehicleGoogleMap extends Component {
         }
         }
 
-          var defaultProps = {
-                    center: {placeComponents[0].lat, placeComponents[0].lng},
+        if(placeComponents.length > 0){
+        var defaultCenterLat = placeComponents[0].lat;
+        var defaultCenterLon = placeComponents[0].lng;
+           defaultProps = {
+                    center: {defaultCenterLat, defaultCenterLon},
                     zoom: 9
                 };
+                }
         return (
             <div style={divStyle}>
                 <GoogleMap
