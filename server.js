@@ -6,15 +6,15 @@ var webpackConfig = require('./webpack.config.js')
 var config = {
 	port: 3000 || process.env.PORT,
 	management: {
-		host: "52.35.175.134" || process.env.MANAGEMENT_HOST,
+		host: "fleet-tracker.tikalknowledge.com" || process.env.MANAGEMENT_HOST,
 		port: "3080" || process.env.MANAGEMENT_PORT
 	},
 	gps: {
-		host: "52.35.175.134" || process.env.GPS_HOST,
+		host: "fleet-tracker.tikalknowledge.com" || process.env.GPS_HOST,
 		port: "8080" || process.env.GPS_HOST
 	},
 	segment: {
-		host: "52.35.175.134" || process.env.SEGMENT_HOST,
+		host: "fleet-tracker.tikalknowledge.com" || process.env.SEGMENT_HOST,
 		port: "9080" || process.env.SEGMENT_PORT
 	},
 };
@@ -50,7 +50,7 @@ var request = require('request');
 
 
 // IN: http://localhost:3000/api/v1/guardians?username=g1
-// OUT: http://52.35.175.134:3080/api/v1/guardians?username=g1
+// OUT: http://fleet-tracker.tikalknowledge.com:3080/api/v1/guardians?username=g1
 app.get('/api/v1/guardians', function (req, res) {
 
     console.log('Enter *** getGuardian ***');
@@ -78,7 +78,7 @@ app.get('/api/v1/guardians', function (req, res) {
 
 
 // IN: http://localhost:3000/gps/angel/1?start=0&stop=160901120444
-// OUT: http://52.35.175.134:8080/gps/vehicle/1?start=0&stop=160901120444
+// OUT: http://fleet-tracker.tikalknowledge.com:8080/gps/vehicle/1?start=0&stop=160901120444
 app.get('/gps/angel/:id', function (req, res) {
 
     console.log('Enter *** getAngels ***');
@@ -109,7 +109,7 @@ app.get('/gps/angel/:id', function (req, res) {
 })
 
 // IN: http://localhost:3000/segments/angel/1?start=0&stop=160901120444
-// OUT: http://52.35.175.134:9080/segments/vehicle/1?start=0&stop=160902061802
+// OUT: http://fleet-tracker.tikalknowledge.com:9080/long-transits/vehicle/1?start=0&stop=160902061802
 app.get('/segments/angel/:id', function (req, res) {
 
    console.log('Enter *** getSegments ***');
@@ -120,7 +120,7 @@ app.get('/segments/angel/:id', function (req, res) {
                              'Accept': 'application/json',
                              'Content-Type': 'application/json'
                            },
-                           url: 'http://'+config.segment.host+':'+config.segment.port+'/segments/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
+                           url: 'http://'+config.segment.host+':'+config.segment.port+'/long-transits/vehicle/'+req.params.id + '?start='+start+'&stop='+stop,
                            method: 'GET'
                          })
             .then(function(data) {

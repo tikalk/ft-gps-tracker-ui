@@ -27,6 +27,18 @@ function normlizeResponse(action, idFName, key) {
 
     return entities;
 }
+function normlizeResponseLocations(action, idFName, key) {
+
+    var  entitiesTemp = action.response;
+    var result = new Array();
+    var entities = {};
+    for (var entity in entitiesTemp) {
+        var entityData = entitiesTemp[entity];
+        entities[entity] = entityData;
+    }
+result.push(entities);
+    return result;
+}
 
 function vehicles(state = {}, action) {
     const { type } = action
@@ -60,7 +72,7 @@ function places(state = {}, action) {
 }
 
 function vehicleLocations(state = {}, action) {
-
+// Lev live feed will come here
     const { type } = action
     if (type === ActionTypes.VEHICLE_LOCATIONS_REQUEST) {
 
@@ -70,12 +82,24 @@ function vehicleLocations(state = {}, action) {
         // When live we socket feed is working
         // 1. UNCOMMENT 2 lines below
         // 2. COMMENT 3 lines that follow
-        //var nextState = merge({}, state, normlizeResponse({response: action.payload}, "_id"))
-        //return Object.assign({}, nextState, {});
+        var nextVehicle = normlizeResponseLocations({response: JSON.parse(action.payload.body)});
+        var found = false;
+        for(var vehicle in state){
+        if (state[vehicle].vehicleId === nextVehicle.vehicleId){
+        found = true;
+        state[vehicle] = nextVehicle;
 
-        advanceLocations();
-        var nextState = merge({}, state, normlizeResponse({response: global.locations}, "_id"))
-        return Object.assign({}, nextState, {});
+        }
+        }
+        if (found == false){
+        state[nextVehicle[0].vehicleId] = nextVehicle[0];
+        }
+
+        return Object.assign({}, state, {});
+
+//        advanceLocations();
+//        var nextState = merge({}, state, normlizeResponse({response: global.locations}, "_id"))
+//        return Object.assign({}, nextState, {});
     }
 
     return state;

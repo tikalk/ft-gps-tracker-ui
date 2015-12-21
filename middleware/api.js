@@ -121,7 +121,12 @@ export default store => next => action => {
     }
 
     const [ requestType, successType, failureType ] = types
-    next(actionWith({type: requestType}))
+    var payload;
+    if (action[CALL_API] != null){
+    payload = action[CALL_API].payload;
+    }
+
+    next(actionWith({type: requestType,payload:payload}))
 
     if (action[CALL_API].skipHttpRequest === true) { // hack
         return;

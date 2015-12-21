@@ -77,6 +77,7 @@ function fetchVehicleLocations(payload) {
             types: [VEHICLE_LOCATIONS_REQUEST, VEHICLE_LOCATIONS_SUCCESS, VEHICLE_LOCATIONS_FAILURE],
             endpoint: ``,
             schema: Schemas.VEHICLE,
+            payload:payload,
             skipHttpRequest: true
         }
     }

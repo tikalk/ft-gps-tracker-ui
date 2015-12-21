@@ -94,19 +94,26 @@ class VehicleList extends Component {
             var callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
 
             this.state.firstRender = false;
-            var eb = new EventBus("http://52.33.17.211:8080");
-            vehicleArray.map(function (vehicle) {
-                eb.onopen = function () {
-                    eb.registerHandler("gps-feed-"+ vehicle.id, function (err, msg) {
+            var eb = new EventBus("http://fleet-tracker.tikalknowledge.com:8080/eventbus");
+//            var eb = new EventBus("http://52.33.17.211:8080");
 
-                        //Integration instructions
-                        //------------------------
-                        // When live feed will work make sure locations are parsed from msg
-
-                        callLoadVehicleLocationsData(msg);
-                    })
-                }
-            });
+            eb.onopen = function () {
+                eb.registerHandler("gps-feed-all", function (err, msg) {
+                callLoadVehicleLocationsData(msg);
+                })
+              }
+//            vehicleArray.map(function (vehicle) {
+//                eb.onopen = function () {
+//                    eb.registerHandler("gps-feed-all", function (err, msg) {
+//
+//                        //Integration instructions
+//                        //------------------------
+//                        // When live feed will work make sure locations are parsed from msg
+//
+//                        callLoadVehicleLocationsData(msg);
+//                    })
+//                }
+//            });
         }
 
         const {vehicles,vehicleLocations } = this.props;

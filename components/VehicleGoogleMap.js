@@ -33,11 +33,7 @@ export default class VehicleGoogleMap extends Component {
     render() {
 
 
-        var defaultProps = {
-            center: {lat: 59.938043, lng: 30.337157},
-            zoom: 9,
-            greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
-        };
+
         var divStyle = {
             height: '500px'
         };
@@ -45,14 +41,18 @@ export default class VehicleGoogleMap extends Component {
         var vehicleLocationArray = this.obj2array(this.props.vehicleLocations);
 
         var handleClick = this.props.handleClick;
-				var placeComponents = []
-        if (vehicleArray.length === vehicleLocationArray.length) placeComponents = vehicleArray.map(function (vehicle) {
+
+        var placeComponentsTemp = vehicleArray.map(function (vehicle) {
             var vehicleLocationsIndex = 0;
             for (var vehicleLocation in vehicleLocationArray) {
                 if (vehicleLocationArray[vehicleLocation].vehicleId == vehicle.id) {
                     break;
                 }
                 vehicleLocationsIndex++;
+            }
+
+            if (vehicleLocationsIndex === vehicleLocationArray.length){
+                return;
             }
             var lat = vehicleLocationArray[vehicleLocationsIndex].lat;
             var lng = vehicleLocationArray[vehicleLocationsIndex].lon;
@@ -71,6 +71,17 @@ export default class VehicleGoogleMap extends Component {
             return <Place handleClick={handleClick} data={vehicle.id} lat={lat} lng={lng}
                           color={color} text={text} /* Kreyser Avrora */ />
         });
+        var placeComponents = [];
+        for (var placeComponent in placeComponentsTemp){
+        if (typeof placeComponentsTemp[placeComponent] !== "undefined"){
+        placeComponents.push(placeComponentsTemp[placeComponent]);
+        }
+        }
+
+          var defaultProps = {
+                    center: {placeComponents[0].lat, placeComponents[0].lng},
+                    zoom: 9
+                };
         return (
             <div style={divStyle}>
                 <GoogleMap
