@@ -118,12 +118,12 @@ class VehicleList extends Component {
 
         const {vehicles,vehicleLocations } = this.props;
 
-
+        var vehicleMap = Object.keys(vehicleLocations).length == 0 ? null : <VehicleGoogleMap vehicles={vehicles} vehicleLocations={vehicleLocations}
+                                                               handleClick={this.handleVehicleClick}/>;
         return (
             <div>
                 <Panel header={"Vehical Live Map View"} bsStyle="info">
-                    <VehicleGoogleMap vehicles={vehicles} vehicleLocations={vehicleLocations}
-                                      handleClick={this.handleVehicleClick}/>
+                    {vehicleMap}
                 </Panel>
                 <Panel>
                     <UIList items={vehicles} getListItemContent={this.getListItemContent}
