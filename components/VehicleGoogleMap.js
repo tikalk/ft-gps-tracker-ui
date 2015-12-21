@@ -83,10 +83,10 @@ export default class VehicleGoogleMap extends Component {
         }
 
         if(placeComponents.length > 0){
-``        var defaultCenterLat = placeComponents[0].props.lat;
+            var defaultCenterLat = placeComponents[0].props.lat;
         var defaultCenterLon = placeComponents[0].props.lng;
            defaultProps = {
-                    center: {defaultCenterLat, defaultCenterLon},
+               center: {lat: defaultCenterLat, lon: defaultCenterLon},
                     zoom: 9
                 };
                 }
