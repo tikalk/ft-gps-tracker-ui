@@ -20,10 +20,6 @@ export default class VehicleGoogleMap extends Component {
         return true;
     }
 
-    //
-    //shouldComponentUpdate(nextProps) {
-    //    return !this.arraysEqual(this.props.locations, nextProps.locations);
-    //}/
 
     constructor(props) {
         super(props);
@@ -83,13 +79,16 @@ export default class VehicleGoogleMap extends Component {
         }
 
         if(placeComponents.length > 0){
-``        var defaultCenterLat = placeComponents[0].props.lat;
+        var defaultCenterLat = placeComponents[0].props.lat;
         var defaultCenterLon = placeComponents[0].props.lng;
            defaultProps = {
-                    center: {defaultCenterLat, defaultCenterLon},
+                    center: {lat:defaultCenterLat, lng:defaultCenterLon},
                     zoom: 9
                 };
                 }
+
+
+
         return (
             <div style={divStyle}>
                 <GoogleMap
