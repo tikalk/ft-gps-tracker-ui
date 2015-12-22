@@ -45,7 +45,8 @@ export default class LocationHistoryGoogleMap extends Component {
         var placeComponents = places.map(function (place) {
             placesCounter++;
             var str = placesCounter;
-            return <Place color="red" key={place._id} lat={place.lat} lng={place.lon} text={placesCounter}/>
+            var hoverText="";
+            return <Place color="red" key={place._id} lat={place.lat} lng={place.lon} hoverText={hoverText} text={placesCounter}/>
         });
 
         if (placeComponents.length > 0) {

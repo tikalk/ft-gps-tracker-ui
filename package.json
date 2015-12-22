@@ -16,7 +16,7 @@
   "homepage": "http://www.tikalk.com",
   "dependencies": {
     "babel": "^6.3.13",
-    "css-loader": "^0.23.0",
+    "css-loader": "^0.23.1",
     "exports-loader": "^0.6.2",
     "express": "^4.13.3",
     "extract-text-webpack-plugin": "^0.9.1",

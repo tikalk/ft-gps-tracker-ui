@@ -26,10 +26,10 @@ export default class Place extends Component {
             //width: K_WIDTH,
             width: "auto",
             //height: K_HEIGHT,
-            height: "auto",
+            height: "40px",
             left: -K_WIDTH / 2,
             top: -K_HEIGHT / 2,
-
+            textAlign:"center",
             border: '5px solid ' + this.props.color,
             //borderRadius: K_HEIGHT,
             borderRadius: 10,
@@ -46,11 +46,14 @@ export default class Place extends Component {
         };
         const arrowStyle = {position: "absolute", top: "12px",fontSize:'24px',color:'blue'}
         return (
-            <div>
-                <div style={greatPlaceStyle} onClick={this.onClick}>
+            <div className="gpsPlace">
+                <div  style={greatPlaceStyle} onClick={this.onClick}>
                     {this.props.text}
+
                 </div>
+                <div className="hoverInfo">{this.props.hoverText}</div>
                 <div style={arrowStyle}>▼</div>
+
             </div>
         );
     }

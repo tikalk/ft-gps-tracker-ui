@@ -2,6 +2,8 @@ import React, {PropTypes, Component} from 'react';
 import Place from '../components/Place'
 
 import GoogleMap from 'google-map-react';
+import '../assets/style.css';
+
 
 
 export default class VehicleGoogleMap extends Component {
@@ -31,7 +33,7 @@ export default class VehicleGoogleMap extends Component {
 
         var defaultProps = {
             center: {lat: 59.938043, lng: 30.337157},
-            zoom: 9,
+            zoom: 13,
             greatPlaceCoords: {lat: 59.724465, lng: 30.080121}
         };
         var divStyle = {
@@ -68,8 +70,9 @@ export default class VehicleGoogleMap extends Component {
 
             var color = toColor(-299990 - vehicleLocationsIndex * 50000);
             var text = vehicle.kind;// + " " + vehicle.serialNumber;
+            var hoverText = "Serial Number: "+vehicle.serialNumber;
             return <Place handleClick={handleClick} data={vehicle.id} lat={lat} lng={lng}
-                          color={color} text={text}/>
+                          color={color} text={text} hoverText={hoverText}/>
         });
         var placeComponents = [];
         for (var placeComponent in placeComponentsTemp) {
@@ -83,7 +86,7 @@ export default class VehicleGoogleMap extends Component {
             var defaultCenterLon = placeComponents[0].props.lng;
             defaultProps = {
                 center: {lat: defaultCenterLat, lng: defaultCenterLon},
-                zoom: 9
+                zoom: 13
             };
         }
 
