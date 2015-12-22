@@ -69,7 +69,7 @@ export default class VehicleGoogleMap extends Component {
             var color = toColor(-299990 - vehicleLocationsIndex * 50000);
             var text = vehicle.kind + " " + vehicle.serialNumber;
             return <Place handleClick={handleClick} data={vehicle.id} lat={lat} lng={lng}
-                          color={color} text={text} /* Kreyser Avrora */ />
+                          color={color} text={text}/>
         });
         var placeComponents = [];
         for (var placeComponent in placeComponentsTemp){

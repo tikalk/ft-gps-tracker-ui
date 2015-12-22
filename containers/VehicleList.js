@@ -41,20 +41,12 @@ class VehicleList extends Component {
 
     handleVehicleClick(data) {
         var now = new Date();
-
-        // Integration instructions
-        //-------------------------
-        // When there is daily data this should be changed back to start of day,
-        // also need to add time filters in the ui
-
-
-        var startOfYear = new Date(now.getTime() -
-            -now.getMonth() * 30 * 24 * 60 * 60 * 1000 -
+        var startOfDay = new Date(now.getTime() -
             now.getHours() * 60 * 60 * 1000 -
             now.getMinutes() * 60 * 1000 -
             now.getSeconds() * 1000 -
             now.getMilliseconds());
-        this.props.pushState(null, "/segments/" + data + "/" + startOfYear.getTime() / 1000 + "/" + Date.now());
+        this.props.pushState(null, "/segments/" + data + "/" + startOfDay.getTime() / 1000 + "/" + Date.now());
     }
 
     getListItemContent(data) {
@@ -77,17 +69,6 @@ class VehicleList extends Component {
 
     render() {
 
-
-        //Integration instructions
-        //------------------------
-        // When live we socket feed is working remove following block
-
-        // if (this.state.firstRender) {
-        //     this.state.firstRender = false;
-        //     this.callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
-        //     setInterval(this.callLoadVehicleLocationsData, 200);
-        // }
-
         if (this.state.firstRender) {
             const {vehicles } = this.props;
             var vehicleArray = this.obj2array(vehicles);
@@ -95,25 +76,12 @@ class VehicleList extends Component {
 
             this.state.firstRender = false;
             var eb = new EventBus("http://fleet-tracker.tikalknowledge.com:8080/eventbus");
-//            var eb = new EventBus("http://52.33.17.211:8080");
 
             eb.onopen = function () {
                 eb.registerHandler("gps-feed-all", function (err, msg) {
                 callLoadVehicleLocationsData(msg);
                 })
               }
-//            vehicleArray.map(function (vehicle) {
-//                eb.onopen = function () {
-//                    eb.registerHandler("gps-feed-all", function (err, msg) {
-//
-//                        //Integration instructions
-//                        //------------------------
-//                        // When live feed will work make sure locations are parsed from msg
-//
-//                        callLoadVehicleLocationsData(msg);
-//                    })
-//                }
-//            });
         }
 
         const {vehicles,vehicleLocations } = this.props;
@@ -125,16 +93,9 @@ class VehicleList extends Component {
                 <Panel header={"Vehical Live Map View"} bsStyle="info">
                     {vehicleMap}
                 </Panel>
-                <Panel>
-                    <UIList items={vehicles} getListItemContent={this.getListItemContent}
-                            getListItemHeader={this.getListItemHeader}
-                            handleClick={this.handleVehicleClick}/>
-                </Panel>
-
             </div>
         )
     }
-
 
     obj2array(obj) {
         var result = new Array();
