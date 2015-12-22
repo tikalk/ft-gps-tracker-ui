@@ -1,0 +1,18 @@
+.hoverInfo{
+    display:none;
+}
+
+.gpsPlace:hover .hoverInfo{
+    display:block;
+}
+
+.arrowBottom:before {
+    border: 15px solid transparent;
+    content: ' ';
+    display: block;
+    position: absolute;
+    z-index: 2;
+    border-top-color: #aaa;
+    left: 2px;
+    top: 0;
+}

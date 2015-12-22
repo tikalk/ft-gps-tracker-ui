@@ -58,16 +58,16 @@ class PlacesList extends Component {
                 <Panel header={"Vehical Location History"} bsStyle="info">
                     <LocationHistoryGoogleMap places={places}/>
                 </Panel>
-                <Panel>
-                    <UIList items={places} getListItemContent={this.getListItemContent}
-                            getListItemHeader={this.getListItemHeader}
-                            handleClick={this.handleSegmentClick}/>
-                </Panel>
+
                 </div>
         )
     }
 }
-
+//<Panel>
+//    <UIList items={places} getListItemContent={this.getListItemContent}
+//            getListItemHeader={this.getListItemHeader}
+//            handleClick={this.handleSegmentClick}/>
+//</Panel>
 
 function mapStateToProps(state) {
     var placesObj = state.places;
