@@ -47,6 +47,15 @@ export default class LocationHistoryGoogleMap extends Component {
             var str = placesCounter;
             return <Place color="red" key={place._id} lat={place.lat} lng={place.lon} text={placesCounter}/>
         });
+
+        if (placeComponents.length > 0) {
+            var defaultCenterLat = placeComponents[0].props.lat;
+            var defaultCenterLon = placeComponents[0].props.lng;
+            defaultProps = {
+                center: {lat: defaultCenterLat, lng: defaultCenterLon},
+                zoom: 9
+            };
+        }
         return (
             <div style={divStyle}>
                 <GoogleMap

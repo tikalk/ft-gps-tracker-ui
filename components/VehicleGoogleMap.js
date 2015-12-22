@@ -51,7 +51,7 @@ export default class VehicleGoogleMap extends Component {
                 vehicleLocationsIndex++;
             }
 
-            if (vehicleLocationsIndex === vehicleLocationArray.length){
+            if (vehicleLocationsIndex === vehicleLocationArray.length) {
                 return;
             }
             var lat = vehicleLocationArray[vehicleLocationsIndex].lat;
@@ -72,21 +72,20 @@ export default class VehicleGoogleMap extends Component {
                           color={color} text={text}/>
         });
         var placeComponents = [];
-        for (var placeComponent in placeComponentsTemp){
-        if (typeof placeComponentsTemp[placeComponent] !== "undefined"){
-        placeComponents.push(placeComponentsTemp[placeComponent]);
-        }
+        for (var placeComponent in placeComponentsTemp) {
+            if (typeof placeComponentsTemp[placeComponent] !== "undefined") {
+                placeComponents.push(placeComponentsTemp[placeComponent]);
+            }
         }
 
-        if(placeComponents.length > 0){
-        var defaultCenterLat = placeComponents[0].props.lat;
-        var defaultCenterLon = placeComponents[0].props.lng;
-           defaultProps = {
-                    center: {lat:defaultCenterLat, lng:defaultCenterLon},
-                    zoom: 9
-                };
-                }
-
+        if (placeComponents.length > 0) {
+            var defaultCenterLat = placeComponents[0].props.lat;
+            var defaultCenterLon = placeComponents[0].props.lng;
+            defaultProps = {
+                center: {lat: defaultCenterLat, lng: defaultCenterLon},
+                zoom: 9
+            };
+        }
 
 
         return (
