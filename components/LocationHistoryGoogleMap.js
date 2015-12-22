@@ -27,7 +27,7 @@ export default class LocationHistoryGoogleMap extends Component {
 
         var defaultProps = {
             center: {lat: 59.938043, lng: 30.337157},
-            zoom: 9,
+            zoom: 15,
         };
         var divStyle = {
             height: '500px'
@@ -54,7 +54,7 @@ export default class LocationHistoryGoogleMap extends Component {
             var defaultCenterLon = placeComponents[0].props.lng;
             defaultProps = {
                 center: {lat: defaultCenterLat, lng: defaultCenterLon},
-                zoom: 9
+                zoom: 15
             };
         }
         return (

@@ -53,10 +53,12 @@ class PlacesList extends Component {
 
     render() {
         const {places } = this.props;
+
+        var historyMap = Object.keys(places).length == 0 ? null : <LocationHistoryGoogleMap places={places}/>;
         return (
             <div>
                 <Panel header={"Vehical Location History"} bsStyle="info">
-                    <LocationHistoryGoogleMap places={places}/>
+                    {historyMap}
                 </Panel>
 
                 </div>
