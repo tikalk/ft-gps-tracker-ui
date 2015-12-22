@@ -58,6 +58,7 @@ class VehicleList extends Component {
         return "Type: " + data.kind;
     }
 
+
     handleClick() {
         const { onVehicleClick } = this.props;
         onVehicleClick(this.props.data);
@@ -75,7 +76,10 @@ class VehicleList extends Component {
             var callLoadVehicleLocationsData = this.callLoadVehicleLocationsData.bind(this);
 
             this.state.firstRender = false;
-            var eb = new EventBus("http://fleet-tracker.tikalknowledge.com:8080/eventbus");
+
+            var eventbusUrl = SERVER_CONFIG.EVENT_HOST + ':' + SERVER_CONFIG.EVENT_PORT+'/eventbus';
+
+            var eb = new EventBus(eventbusUrl);
 
             eb.onopen = function () {
                 eb.registerHandler("gps-feed-all", function (err, msg) {

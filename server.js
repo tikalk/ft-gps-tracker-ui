@@ -6,16 +6,20 @@ var webpackConfig = require('./webpack.config.js')
 var config = {
 	port: 3000 || process.env.PORT,
 	management: {
-		host: "fleet-tracker.tikalknowledge.com" || process.env.MANAGEMENT_HOST,
-		port: "3080" || process.env.MANAGEMENT_PORT
+		host:   process.env.MANAGEMENT_HOST || "fleet-tracker.tikalknowledge.com"  ,
+		port:   process.env.MANAGEMENT_PORT || "3080"
 	},
 	gps: {
-		host: "fleet-tracker.tikalknowledge.com" || process.env.GPS_HOST,
-		port: "8080" || process.env.GPS_HOST
+		host:   process.env.GPS_HOST || "fleet-tracker.tikalknowledge.com",
+		port:   process.env.GPS_HOST || "8080"
 	},
 	segment: {
-		host: "fleet-tracker.tikalknowledge.com" || process.env.SEGMENT_HOST,
-		port: "9080" || process.env.SEGMENT_PORT
+		host: process.env.SEGMENT_HOST || "fleet-tracker.tikalknowledge.com",
+		port: process.env.SEGMENT_PORT || "9080"
+	},
+	event: {
+		host: process.env.EVENT_HOST || "http://fleet-tracker.tikalknowledge.com",
+		port: process.env.EVENT_PORT || "8080"
 	},
 };
 // var guardiansSrvHost = "52.35.175.134" || process.env.MANAGEMENT_HOST;
@@ -177,6 +181,11 @@ app.get('/gps/angel/:id', function (req, res) {
         res.end(JSON.stringify(angels));
 
     });
+})
+
+app.get('/config.js', function (req, res) {
+    var file = 'var SERVER_CONFIG = { EVENT_HOST: "'+config.event.host+'", EVENT_PORT: '+config.event.port+' }'
+    res.send(file)
 })
 
 
