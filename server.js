@@ -4,14 +4,14 @@ var webpackHotMiddleware = require('webpack-hot-middleware')
 var webpackConfig = require('./webpack.config.js')
 
 var config = {
-	port: 3000 || process.env.PORT,
+	port: process.env.PORT || 3000,
 	management: {
 		host:   process.env.MANAGEMENT_HOST || "fleet-tracker.tikalknowledge.com"  ,
 		port:   process.env.MANAGEMENT_PORT || "3080"
 	},
 	gps: {
 		host:   process.env.GPS_HOST || "fleet-tracker.tikalknowledge.com",
-		port:   process.env.GPS_HOST || "8080"
+		port:   process.env.GPS_PORT || "8080"
 	},
 	segment: {
 		host: process.env.SEGMENT_HOST || "fleet-tracker.tikalknowledge.com",
