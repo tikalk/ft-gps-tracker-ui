@@ -6,19 +6,19 @@ var webpackConfig = require('./webpack.config.js')
 var config = {
 	port: process.env.PORT || 3000,
 	management: {
-		host:   process.env.MANAGEMENT_HOST || "as-management"  ,
+		host:   process.env.MANAGEMENT_HOST || "ft-management"  ,
 		port:   process.env.MANAGEMENT_PORT || "3080"
 	},
 	gps: {
-		host:   process.env.GPS_HOST || "as-gps-service",
+		host:   process.env.GPS_HOST || "ft-gps-service",
 		port:   process.env.GPS_PORT || "8080"
 	},
 	segment: {
-		host: process.env.SEGMENT_HOST || "as-segments-service",
+		host: process.env.SEGMENT_HOST || "ft-segments-service",
 		port: process.env.SEGMENT_PORT || "9080"
 	},
 	event: {
-		host: process.env.EVENT_HOST || "as-gps-service",
+		host: process.env.EVENT_HOST || "ft-gps-service",
 		port: process.env.EVENT_PORT || "8080"
 	},
 };

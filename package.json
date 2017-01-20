@@ -1,17 +1,17 @@
 {
-  "name": "gps-tracker-ui",
+  "name": "ft-gps-tracker-ui",
   "version": "0.0.0",
-  "description": "gps-tracker-ui microservice",
+  "description": "ft-gps-tracker-ui microservice",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/tikalk/gps-tracker-ui.git"
+    "url": "https://github.com/tikalk/ft-gps-tracker-ui.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/tikalk/gps-tracker-ui/issues"
+    "url": "https://github.com/tikalk/ft-gps-tracker-ui/issues"
   },
   "homepage": "http://www.tikalk.com",
   "dependencies": {
