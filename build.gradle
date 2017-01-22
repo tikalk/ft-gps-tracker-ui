@@ -1,0 +1,40 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-docker-plugin:2.5'
+    }
+}
+
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'com.bmuschko.docker-remote-api'
+
+
+import com.bmuschko.gradle.docker.tasks.image.DockerBuildImage
+import com.bmuschko.gradle.docker.tasks.image.DockerPushImage
+
+
+repositories {
+    mavenCentral()
+}
+
+docker{
+    url = "$dockerHost"
+ //   certPath = new File(certUrl)
+
+}
+
+task buildImage(type: DockerBuildImage) {
+    quiet = false
+    inputDir = file('.') // projectDir
+    tag = "$registerBaseName$dockerBranch/$project.name:$dockerTag"
+}
+//build.dependsOn(buildImage)
+
+task pushImage(type: DockerPushImage) {
+    dependsOn buildImage
+    imageName = "$registerBaseName$dockerBranch/$project.name"
+    tag="$dockerTag"
+}
