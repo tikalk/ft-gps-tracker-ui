@@ -77,7 +77,7 @@ class VehicleList extends Component {
 
             this.state.firstRender = false;
 
-            var eventbusUrl = SERVER_CONFIG.EVENT_HOST + ':' + SERVER_CONFIG.EVENT_PORT+'/eventbus';
+            var eventbusUrl = 'http://' + SERVER_CONFIG.EVENT_HOST + ':' + SERVER_CONFIG.EVENT_PORT+'/eventbus';
 
             var eb = new EventBus(eventbusUrl);
 

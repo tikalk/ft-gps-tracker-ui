@@ -11,7 +11,7 @@ var config = {
 	},
 	gps: {
 		host:   process.env.GPS_HOST || "ft-gps-service",
-		port:   process.env.GPS_PORT || "8080"
+		port:   process.env.GPS_PORT || "8088"
 	},
 	segment: {
 		host: process.env.SEGMENT_HOST || "ft-segments-service",
@@ -19,7 +19,7 @@ var config = {
 	},
 	event: {
 		host: process.env.EVENT_HOST || "ft-gps-service",
-		port: process.env.EVENT_PORT || "8080"
+		port: process.env.EVENT_PORT || "8088"
 	},
 };
 // var guardiansSrvHost = "52.35.175.134" || process.env.MANAGEMENT_HOST;
