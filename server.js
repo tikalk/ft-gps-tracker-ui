@@ -6,20 +6,20 @@ var webpackConfig = require('./webpack.config.js')
 var config = {
 	port: process.env.PORT || 3000,
 	management: {
-		host:   process.env.MANAGEMENT_HOST || "ft-management"  ,
-		port:   process.env.MANAGEMENT_PORT || "3080"
+		host:   process.env.FT_MANAGEMENT_SERVICE_HOST || "ft-management"  ,
+		port:   process.env.FT_MANAGEMENT_SERVICE_PORT || "3080"
 	},
 	gps: {
-		host:   process.env.GPS_HOST || "ft-gps-service",
-		port:   process.env.GPS_PORT || "8088"
+		host:   process.env.FT_GPS_SERVICE_SERVICE_HOST || "ft-gps-service",
+		port:   process.env.FT_GPS_SERVICE_SERVICE_PORT || "8088"
 	},
 	segment: {
-		host: process.env.SEGMENT_HOST || "ft-segments-service",
-		port: process.env.SEGMENT_PORT || "9080"
+		host: process.env.FT_SEGMENT_SERVICE_SERVICE_HOST || "ft-segments-service",
+		port: process.env.FT_SEGMENT_SERVICE_SERVICE_PORT || "9080"
 	},
 	event: {
-		host: process.env.EVENT_HOST || "ft-gps-service",
-		port: process.env.EVENT_PORT || "8088"
+		host: process.env.FT_GPS_SERVICE_SERVICE_HOST || "ft-gps-service",
+		port: process.env.FT_GPS_SERVICE_SERVICE_PORT || "8088"
 	},
 };
 // var guardiansSrvHost = "52.35.175.134" || process.env.MANAGEMENT_HOST;
